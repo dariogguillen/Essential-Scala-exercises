@@ -103,4 +103,18 @@ object CatsAgain extends App {
     def add(in: Int): Int = in + amount
   }
   println(new Counter1(10).adjust(new Adder(5)).count)
+
+  // 3.3.2.2 Extended Body of Work
+  object Director {
+    def apply(f: String, l: String, y: Int): Director = new Director(f, l, y)
+    def older(a: Director, b: Director): Director     = if (a.yearOfBirth < a.yearOfBirth) a else b
+  }
+
+  object Film {
+    def apply(n: String, y: Int, r: Double, d: Director): Film = new Film(n, y, r, d)
+    def highestRating(a: Film, b: Film): Film                  = if (a.imdbRating > b.imdbRating) a else b
+
+    def oldestDirectorAtTheTime(a: Film, b: Film): Director =
+      if (a.directorAge > b.directorAge) a.director else b.director
+  }
 }
