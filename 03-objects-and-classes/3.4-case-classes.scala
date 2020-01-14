@@ -12,7 +12,7 @@ object CaseClasses extends App {
     def older(a: Director, b: Director): Director = if (a.yearOfBirth < a.yearOfBirth) a else b
   }
 
-  class Film(val name: String, val yearOfRelease: Int, val imdbRating: Double, val director: Director) {
+  case class Film(val name: String, val yearOfRelease: Int, val imdbRating: Double, val director: Director) {
     def directorAge: Int                          = yearOfRelease - director.yearOfBirth
     def isDirectedBy(director: Director): Boolean = this.director == director
 
@@ -47,6 +47,17 @@ object CaseClasses extends App {
     def apply(name: String): Person = {
       val parts = name.split(" ")
       new Person(parts(0), parts(1))
+    }
+  }
+
+  // PATTERN MATCHING
+  // 3.5.3.2 Get Off My Lawn!
+  object Dad {
+
+    def rate(film: Film): Double = film match {
+      case Film(_, _, Director("Clint", "Eastwood", _)) => 10.0
+      case Film(_, _, Director("John", "McTiernan", _)) => 7.0
+      case _                                            => 3.0
     }
   }
 }
