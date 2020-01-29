@@ -100,4 +100,23 @@ object traits extends App {
     case Finite(num) => s"It's finite: $num"
     case Infinit     => s"It's infinite"
   }
+
+  // 4.4.4.1 Stop on a Dime
+
+  sealed trait TrafficLight
+  case object Red extends TrafficLight
+  case object Green extends TrafficLight
+  case object Yellow extends TrafficLight
+
+  // 4.4.4.2 Calculator
+  sealed trait Calculation
+  final case class Success(result: Int) extends Calculation
+  final case class Failure(result: String) extends Calculation
+
+  // 4.4.4.3 Water, eater, everywhere
+  sealed trait Source
+  case object Well extends Source
+  case object Spring extends Source
+  case object Tap extends Source
+  final case class BottleWater(size: Int, source: Source, carbonated: Boolean)
 }
