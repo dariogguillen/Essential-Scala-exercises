@@ -10,6 +10,6 @@ object PatternMaching extends App {
       case _                  => false
     }
   }
-  println(chipShop.willServe(Cat("cat0", "chips")))
-  println(chipShop.willServe(Cat("cat0", "Chips")))
+  println(chipShop.willServe(Cat("cat0", "gray", "chips")))
+  println(chipShop.willServe(Cat("cat0", "black", "Chips")))
 }
