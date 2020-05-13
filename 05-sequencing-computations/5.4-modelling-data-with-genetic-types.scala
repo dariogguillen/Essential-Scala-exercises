@@ -42,4 +42,18 @@ object genericTypes extends App {
   }
   final case class Full[A](value: A) extends Maybe[A]
   final case class Empty[A]() extends Maybe[A]
+
+  def mightFail0: Maybe[Int] = Full(1)
+  def mightFail1: Maybe[Int] = Full(2)
+  def mightFail2: Maybe[Int] = Empty()
+
+  val mightFail = mightFail0.flatMap { x =>
+    mightFail1.flatMap { y =>
+      // mightFail2.flatMap { z =>
+      Full(x + y)
+      // }
+    }
+  }
+
+  println(mightFail)
 }
